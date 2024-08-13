@@ -1,0 +1,70 @@
+﻿@page "/fermentation-tank"
+
+<h1>Fermentation Tank</h1>
+
+@* <div class="tank-info">
+    <p>Seed Time: @seedTime</p>
+    <p>Harvest Time: @harvestTime</p>
+    <p>Ongoing Maintenance: @ongoingMaintenance</p>
+</div> *@
+
+<div class="tank">
+    <div class="top"></div>
+    <div class="body">
+        <div class="info">
+            <p>Seed Time: @seedTime</p>
+            <p>Harvest Time: @harvestTime</p>
+            <p>Ongoing Maintenance: @ongoingMaintenance</p>
+        </div>
+    </div>
+    <div class="bottom"></div>
+</div>
+
+@code {
+    private DateTime seedTime = DateTime.Now; // Flag that activate when user click
+    private DateTime harvestTime = DateTime.Now.AddDays(7); // should be set to planned harvest time
+    private bool ongoingMaintenance = false; // Should be posible for user to click on / off
+}
+
+<style>
+    .tank-info {
+        background-color: #f0f000;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .tank {
+        width: 200px;
+        height: 300px;
+        position: relative;
+    }
+
+    .top {
+        width: 100%;
+        height: 50px;
+        background-color: #ccc;
+        border-radius: 50% 50% 0 0;
+    }
+
+    .body {
+        width: 100%;
+        height: 200px;
+        background-color: #f0f0f0;
+        border-radius: 0 0 50% 50%;
+    }
+
+    .bottom {
+        width: 100%;
+        height: 50px;
+        background-color: #ccc;
+        border-radius: 0 0 50% 50%;
+    }
+
+    .info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+</style>
